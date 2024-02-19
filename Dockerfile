@@ -7,12 +7,13 @@ RUN apt-get install -y --no-install-recommends \
     libxml2-dev libfontconfig1-dev libcairo2-dev curl libcurl4-openssl-dev \
     libssl-dev libharfbuzz-dev libfribidi-dev \
     libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
-# Install Quarto and dependencies
-RUN apt-get install -y --no-install-recommends \
-    gdebi-core \
-    && rm -rf /var/lib/apt/lists/*
-RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
-RUN gdebi --non-interactive quarto-linux-amd64.deb
+
+RUN mkdir requirements
+
+# https://github.com/RamiKrispin/sdsu-docker-workshop/tree/main/.devcontainer
+COPY install_quarto.sh requirements/
+RUN bash ./requirements/install_quarto.sh
+
 # Install main packages for work
 RUN install2.r  \
      desc flextable fs here knitr officer quarto \
@@ -42,8 +43,8 @@ RUN cd neovim/build && cpack -G DEB && dpkg -i nvim-linux64.deb
 RUN install2.r --error \
     simstudy simsurv flexsurv 
 
-RUN install2.r --error \
-    usethis devtools
+#RUN install2.r --error \
+#    usethis devtools
 
 
 # Copy Neovim configuration files.

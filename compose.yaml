@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  main: 
+    build: .
+    ports:
+      - "6543:6543"
+    volumes: 
+      - type: "bind"
+        source: "."
+	target: "/project"
+    stdin_open: true #run -i
+    tty: true        #run -t
+
+
