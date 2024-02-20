@@ -43,9 +43,10 @@ RUN cd neovim/build && cpack -G DEB && dpkg -i nvim-linux64.deb
 RUN install2.r --error \
     simstudy simsurv flexsurv 
 
-#RUN install2.r --error \
-#    usethis devtools
+RUN install2.r --error \
+    usethis devtools
 
+RUN apt-get install -y --noinstall recommends tmux
 
 # Copy Neovim configuration files.
 

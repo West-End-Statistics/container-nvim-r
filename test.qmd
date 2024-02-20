@@ -3,13 +3,55 @@ title: test.qmd
 ---
 
 
+Currently what we have:
+
+1. Omni completion 
+   - this works just in code chunks in quarto/rmd
+   - works awesome
+2. path completion works
+3. use arrow keys and tab to accept omnicompletion
+4. I don't think I've had an issue with languageserver - but this make it seems like a problem?
+https://github.com/jalvesaq/cmp-nvim-r?tab=readme-ov-file#languageserver
+5. works with radian
 
 
-This is a test quarto document
+What doesn't seem to work:
+1. In this document, if I type a list with dashes, they keep getting indented:
+   - Like
+     - This
+       - Why
+2. Update leader to just be a space bar maybe - localleader right? 
+  - Add which key to help organize stuff
+  - is it possible to have repeat after leader key (for example <leader> d, d, d, d etc.)
+  - leader key in insert mode
 
-
+3. devtools
+  - royxgen skeleton
+  - load_all
+4. autoformat documents
+5. floating help
+6. Go to definition of function
+  - self defined function
+  - 
+7. Default indentation of two spaces
+   - [ ] markdown
+   - [ ] R document
+   - [ ] R file
+8. turn off `_` becomes `->`
+9. turn off single backtick becomes backtick r
+10. automatching/autoindent parens
+   - [ ] quarto
+   - [ ] rfiles
 
 ```{r}
-mtcars
+# currently indent just follow parens from previous line
+ list(
+      a = 1:5,
+      b = 
+  )
+
+x <- list(
+          sjflksf = 1
+          ) # end parents doesnt' go to beginning of line
 ```
 
